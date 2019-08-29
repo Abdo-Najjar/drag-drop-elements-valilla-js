@@ -1,12 +1,15 @@
-*
-{
-
-    margin: 0px;
+*{
     padding: 0px;
+    margin: 0px;
+}
+
+.app{
+    margin: 0px auto;
 }
 
 
-.dragzone{
+/* class for div contanier */
+.emptyZone{
     height: 50px;
     width: 120px;
     border: 2px solid black;
@@ -15,3 +18,21 @@
     margin-left: 10%;
     cursor: pointer;
 }
+
+/* class for drag element (Image) */
+.dragElement{
+    position: relative;
+    width: 120px;
+    height: 50px;
+}
+
+/* class incase dragged element hovered div contanier */
+.hoverdContainer{
+    border: 2px dashed gray;
+    height: 51px;
+    width: 125px;
+    text-align: center;
+}
+
+
+

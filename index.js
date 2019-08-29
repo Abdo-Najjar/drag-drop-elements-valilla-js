@@ -1,13 +1,12 @@
 
-//temp to store dragged image id
+//temp to store dragged image 
 var draggedImage = null;
 
-
 //select all fields that can be has image inside of it. (container)
-var divs = document.querySelectorAll('div');
+var divs = document.querySelectorAll('.emptyZone');
 
-//select all images 
-var imgs = document.querySelectorAll('img')
+//select all drag elements 
+var imgs = document.querySelectorAll('.dragElement')
 
 
     //add eventlistener to all images
@@ -20,6 +19,7 @@ var imgs = document.querySelectorAll('img')
             
             //set draggedImageID variable 
             draggedImage  = selectedImage;
+            
         });
 
     });
@@ -32,15 +32,11 @@ var imgs = document.querySelectorAll('img')
         div.addEventListener('dragover' ,ev =>{
             //allow to dragover div container (Enter div container)
             ev.preventDefault();
-
-            console.log('enter');
             
-
+            //add class in case drag over the container
+            ev.target.classList.add('hoverdContainer');
         });
             
-
-         
-
         //when drag leaves 
         div.addEventListener('drop' , ev => {
 
@@ -79,17 +75,25 @@ var imgs = document.querySelectorAll('img')
                 //in case i
             }
 
-            markedItem.append(draggedImage);
-            
+            //remove hoverdContainer class after dropping element inside of it
+            markedItem.classList.remove('hoverdContainer');
 
-            
+
+            try {
+            //append dragged element into dropped div contanier
+            markedItem.append(draggedImage);
+            } catch (err) {
+                console.log(err);
+            }
+           
         
         });
 
         //when dragleave div container 
         div.addEventListener('dragleave' , ev =>{
-
-            console.log('out');
+            
+            //remove hoverdContainer class after leaving from div contanier
+            ev.target.classList.remove('hoverdContainer');
             
         });
 
